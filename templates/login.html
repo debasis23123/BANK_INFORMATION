@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debasis Bank Login</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    overflow:hidden;
+}
+
+/* Glow Background */
+body::before, body::after{
+    content:'';
+    position:absolute;
+    width:300px;
+    height:300px;
+    border-radius:50%;
+    filter:blur(120px);
+}
+
+body::before{
+    background:#00c6ff;
+    top:-50px;
+    left:-50px;
+}
+
+body::after{
+    background:#0072ff;
+    bottom:-50px;
+    right:-50px;
+}
+
+/* Glass Card */
+.login-box{
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 10px 40px rgba(0,0,0,0.4);
+    width:320px;
+    text-align:center;
+    color:white;
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform: translateY(30px);}
+    to{opacity:1; transform: translateY(0);}
+}
+
+/* Logo */
+.logo{
+    width:80px;
+    margin-bottom:10px;
+}
+
+/* Title */
+h2{
+    margin-bottom:20px;
+    color:#00eaff;
+}
+
+/* Inputs */
+.input-box{
+    margin:15px 0;
+}
+
+.input-box input{
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    outline:none;
+    background:rgba(255,255,255,0.2);
+    color:white;
+}
+
+.input-box input::placeholder{
+    color:#ddd;
+}
+
+/* Button */
+.btn{
+    width:100%;
+    padding:12px;
+    margin-top:15px;
+    border:none;
+    border-radius:25px;
+    background: linear-gradient(45deg,#00c6ff,#0072ff);
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 20px #00c6ff;
+}
+
+/* Error Message */
+.error{
+    margin-top:10px;
+    background: rgba(255,0,0,0.2);
+    padding:10px;
+    border-radius:10px;
+    color:#ff4d4d;
+    font-size:14px;
+}
+
+/* Footer */
+.footer{
+    margin-top:15px;
+    font-size:12px;
+    color:#ccc;
+}
+</style>
+
+</head>
+<body>
+
+<form class="login-box" method="POST" action="/login">
+
+    <!-- Logo -->
+    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png" class="logo">
+
+    <h2>Debasis Bank</h2>
+
+    <div class="input-box">
+        <input type="text" name="username" placeholder="👤 Username" required>
+    </div>
+
+    <div class="input-box">
+        <input type="password" name="password" placeholder="🔒 Password" required>
+    </div>
+
+    <button class="btn">Login</button>
+
+    <!-- 🔥 ERROR MESSAGE -->
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <div class="footer">
+        Secure Banking System © 2026
+    </div>
+
+</form>
+
+</body>
+</html>
