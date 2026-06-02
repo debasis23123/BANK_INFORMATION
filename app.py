@@ -9,7 +9,7 @@ def get_connection():
     return mysql.connector.connect(
         host="localhost",
         user="root",
-        password="debasis@2005",
+        password="MyNewPass@123",
         database="bankdb"
     )
 
@@ -28,7 +28,7 @@ def login():
     conn = get_connection()
     cursor = conn.cursor()
 
-    cursor.execute("SELECT * FROM users WHERE username=%s AND password=%s", (username, password))
+    cursor.execute("SELECT * FROM users WHERE name=%s AND password=%s", (username, password))
     user = cursor.fetchone()
 
     conn.close()
